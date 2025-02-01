@@ -1,48 +1,15 @@
-<!-- logo -->
+# Alephium Encrypted Messaging
 
-![Alephium Logo](https://raw.githubusercontent.com/alephium/alephium-brand-guide/master/logos/light/Logo-Horizontal-Light.png#gh-dark-mode-only) ![Alephium Logo](https://raw.githubusercontent.com/alephium/alephium-brand-guide/master/logos/dark/Logo-Horizontal-Dark.png#gh-light-mode-only)
+## Overview
 
----
+Alephium Encrypted Messaging allows users to chat directly from the Alephium extension wallet. Messages are exchanged in an encrypted manner using the recipient's public key, ensuring that no one else can read the content.
 
-<h2> Table of contents</h2>
+## Contracts
 
-- [Install from sources](#-install-from-sources)
-- [Development](#-development)
+* `ChatFactory.ral`: Chat deployments
 
-## Install from sources
+* <img width="361" alt="Capture d’écran 2025-02-01 à 21 52 51" src="https://github.com/user-attachments/assets/e4e35f81-5a15-4341-b321-a7bac268e342" /><img width="379" alt="Capture d’écran 2025-02-01 à 21 54 39" src="https://github.com/user-attachments/assets/5b905038-2c09-4ab6-abc3-6925665eeb3e" /><img width="362" alt="Capture d’écran 2025-02-01 à 21 54 13" src="https://github.com/user-attachments/assets/b28bd6e0-e63a-44dd-996c-e4b1f6936ca9" /><img width="285" alt="Capture d’écran 2025-02-01 à 22 03 39" src="https://github.com/user-attachments/assets/a8b3179f-5743-401d-a28d-44f569156a35" /><img width="357" alt="Capture d’écran 2025-02-01 à 21 55 27" src="https://github.com/user-attachments/assets/89927c08-28b9-4411-b3d4-6dd309f40c65" />
 
-First clone this repository on your machine then run:
 
-```bash
-yarn        # setup dependencies
-yarn build  # run build process for all packages
-```
 
-To load the locally built extension into your browser, follow one of this guide:
- * [Chrome](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked)
- * [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing)
 
-Load the `./packages/extension/dist` folder
-
-## Development
-
-To setup the repo on your machine just run:
-
-```bash
-yarn      # setup dependencies
-yarn dev  # run build process for all packages in watch mode
-```
-
-## Name Service Integration
-
-The wallet devs look forward to integrate any community name service projects, but there are some essential requirements:
-* **Open Source and Testing**: Your contracts must be open source, and they should have proper tests that cover the important functions.
-* **Offchain resolving**: Your services should provide convenient name&address resolving via full node endpoints.
-* **Onchain resolving**: Your project should support onchain resolving for any group on the chain. It doesn't need to be enabled by default, but it should be available in the contract logic.
-    * For instance, the [name service PoC](https://github.com/Lbqds/alephium-ans/blob/master/contracts/registrars/primary_registrar.ral#L21-L51) supports this with credential token. By default, users don't need to mint such token so
-    it won't affect UX.
-* **Standard Interface**: Your project should have a standard interface for onchain resolution. This makes it easier for other dapps to integrate with your service seamlessly.
-
-## Credits
-
-We have built this project on top of [Argent X](https://github.com/argentlabs/argent-x)'s codebase. We would like to take this opportunity to thank all the [contributors](https://github.com/argentlabs/argent-x/graphs/contributors) of the Argent X project ❤️
