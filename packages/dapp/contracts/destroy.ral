@@ -1,0 +1,3 @@
+TxScript Destroy(shinyToken: ShinyToken, to: Address) {
+  shinyToken.destroy(to)
+}

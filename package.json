@@ -1,0 +1,69 @@
+{
+  "version": "0.9.17",
+  "private": true,
+  "name": "alephium-browser-extension-wallet",
+  "repository": "github:alephium/extension-wallet",
+  "homepage": "https://github.com/alephium/extension-wallet/blob/master/Readme.md",
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "bundlewatch": "^0.3.3",
+    "husky": "^8.0.0",
+    "import-sort-style-module": "^6.0.0",
+    "lerna": "^6.0.0",
+    "lint-staged": ">=10",
+    "patch-package": "^6.4.7",
+    "prettier": ">=2",
+    "prettier-plugin-import-sort": "^0.0.7",
+    "ts-node": "^10.8.1"
+  },
+  "resolutions": {
+    "@babel/preset-react": "7.17.12",
+    "@babel/plugin-transform-react-jsx": "7.17.12"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "prettier --loglevel warn --write \"**/*.{js,jsx,ts,tsx,css,md,yml,json}\"",
+    "dev": "lerna run dev --parallel",
+    "dev:ui": "lerna run dev:ui --parallel",
+    "build-storybook": "lerna run build-storybook --",
+    "clean": "rm -rf node_modules packages/extension/dist packages/get-extension-wallet/dist packages/dapp/dist packages/ui/dist packages/extension/node_modules packages/get-extension-wallet/node_modules packages/dapp/node_modules packages/dapp/.next packages/ui/node_modules packages/storybook/node_modules",
+    "build": "lerna run build --stream",
+    "build:sourcemaps": "GEN_SOURCE_MAPS=true lerna run build",
+    "lint": "lerna run lint --stream",
+    "test": "lerna run test --stream",
+    "test:watch": "lerna run test:watch --stream",
+    "test:e2e": "lerna run test:e2e --stream",
+    "prepare": "husky install && lerna run prepare --stream",
+    "postinstall": "patch-package && lerna run postinstall --stream",
+    "storybook": "cd packages/storybook && yarn storybook",
+    "devnet:upgrade-helper": "NODE_NO_WARNINGS=1 ts-node ./scripts/devnet-upgrade-helper.ts",
+    "devnet:setup-contracts": "NODE_NO_WARNINGS=1 ts-node ./scripts/devnet-setup-contracts.ts"
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  },
+  "bundlewatch": {
+    "files": [
+      {
+        "path": "packages/extension/dist/**/*.*",
+        "maxSize": "4mB",
+        "compression": "none"
+      }
+    ]
+  },
+  "license": "GPL-3.0-only",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css,md,yml,json}": "prettier --write",
+    "*.{ts,tsx}": "eslint --cache --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "crypto-browserify": "^3.12.0",
+    "path-browserify": "^1.0.1",
+    "stream-browserify": "^3.0.0"
+  }
+}
